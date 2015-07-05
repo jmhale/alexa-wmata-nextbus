@@ -1,36 +1,28 @@
 // Alexa SDK for JavaScript v1.0.00
 // Copyright (c) 2014-2015 Amazon.com, Inc. or its affiliates. All Rights Reserved. Use is subject to license terms.
 
-/**
- * App ID for the skill
- */
+
+// App ID for the skill
 var APP_ID = 'amzn1.echo-sdk-ams.app.87696405-b058-4a93-90a2-ab1f6be26f2f';
 
 var https = require('https');
 
-/**
- * The AlexaSkill Module that has the AlexaSkill prototype and helper functions
- */
+// The AlexaSkill Module that has the AlexaSkill prototype and helper functions
 var AlexaSkill = require('./AlexaSkill');
 
-/**
- * URL prefix to fetch stop information from WMATA
- */
+// URL prefix to fetch stop information from WMATA
 var urlPrefix = 'https://api.wmata.com/NextBusService.svc/json/jPredictions?';
 
-/**
- * Variable defining number of events to be read at one time, including the stop name.
- */
-var paginationSize = 4;
+// WMATA API Key
+var apiKey = 'kfgpmgvfgacx98de9q3xazww';
 
-/**
- * Variable defining the length of the delimiter between events
- */
+// Variable defining number of events to be read at one time, including the stop name.
+ var paginationSize = 4;
+
+// Variable defining the length of the delimiter between events 
 var delimiterSize = 2;
 
-/**
- * MetroBusSkill is a child of AlexaSkill.
- */
+// MetroBusSkill is a child of AlexaSkill.
 var MetroBusSkill = function() {
     AlexaSkill.call(this, APP_ID);
 };
@@ -76,10 +68,7 @@ MetroBusSkill.prototype.intentHandlers = {
     }
 };
 
-/**
- * Function to handle the onLaunch skill behavior
- */
-
+// Function to handle the onLaunch skill behavior
 function getWelcomeResponse(response) {
     // If we wanted to initialize the session to have some attributes we could add those here.
     var sessionAttributes = {};
@@ -92,9 +81,7 @@ function getWelcomeResponse(response) {
     response.askWithCard(speechOutput, repromptText, cardTitle, speechOutput);
 }
 
-/**
- * Gets a poster prepares the speech to reply to the user.
- */
+// Gets a poster prepares the speech to reply to the user.
 function handleBusScheduleRequest(intent, session, response) {
     // var stopIdSlot = intent.slots.StopID;
     var repromptText = "With Metro, you can get real time bus arrival information for a route.  For example, you could say L two, or forty, or you can say exit. Now, which route do you want?";
@@ -105,7 +92,7 @@ function handleBusScheduleRequest(intent, session, response) {
     
     // var StopID = stopIdSlot;
  
-    // Read the first 3 events, then set the count to 3
+    // Read the first 4 events, then set the count to 4
     sessionAttributes.index = paginationSize;
 
     var content = "";
@@ -144,8 +131,7 @@ function handleBusScheduleRequest(intent, session, response) {
 
 function getJsonEventsFromMetro(StopID, eventCallback) {
 	// WMATA's test API key
-    var api_key = 'kfgpmgvfgacx98de9q3xazww';
-    var url = urlPrefix + 'api_key=' + api_key + '&StopID=' + StopID;
+    var url = urlPrefix + 'api_key=' + apiKey + '&StopID=' + StopID;
 
     https.get(url, function(res) {
         var body = '';
