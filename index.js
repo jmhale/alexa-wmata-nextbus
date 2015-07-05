@@ -119,7 +119,7 @@ function handleBusScheduleRequest(intent, session, response) {
             speechText = "There is a problem connecting to Metro at this time. Please try again later.";
             response.tell(speechText);
         } else {
-            // replace various abbreviations with full names for text to speech
+            // cleaning up the output to sound a little more natural
             stopName = events[0].replace(/St/g, "Street");
             stopName = stopName.replace("+", "and");
             stopName = stopName.replace(/Rd/g, "Road");
@@ -131,8 +131,10 @@ function handleBusScheduleRequest(intent, session, response) {
 
             speechText = "For the stop at " + stopName + ". ";
             for (i = 1; i < paginationSize; i++) {
-                // a little nicer output for an bus arriving now
-                predictionText = events[i].replace("will arrive in 0 minutes", "is arriving now");
+                // cleaning up the output to sound a little more natural
+                var predictionText = events[i]
+                predictionText = predictionText.replace("will arrive in 0 minutes", "is arriving now");
+                predictionText = predictionText.replace("will arrive in 1 minutes", "will arrive in 1 minute");
                 speechText = speechText + predictionText + " ";
             }
             response.tell(speechText);
