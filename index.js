@@ -1,7 +1,3 @@
-// Alexa SDK for JavaScript v1.0.00
-// Copyright (c) 2014-2015 Amazon.com, Inc. or its affiliates. All Rights Reserved. Use is subject to license terms.
-
-
 // App ID for the skill
 var APP_ID = 'amzn1.echo-sdk-ams.app.87696405-b058-4a93-90a2-ab1f6be26f2f';
 
@@ -146,14 +142,12 @@ function getJsonEventsFromMetro(StopID, eventCallback) {
         });
     }).on('error', function (e) {
         console.log("Got error: ", e);
-    });    
-
+    });
 }
 
 function parseJson(text) {
     text = JSON.parse(text);
     var stopName = text["StopName"];
-
     var predictions = text["Predictions"];
     var retArr = [];
 
@@ -165,7 +159,6 @@ function parseJson(text) {
         var Minutes = predictions[i].Minutes;
         var eventText = 'A route ' + RouteID + ' bus, heading ' + DirectionText + ', will arrive in ' + Minutes + ' minutes.';
         retArr.push(eventText);
-
     }
 
     if (text.length == 0) {
