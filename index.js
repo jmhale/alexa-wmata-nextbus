@@ -80,13 +80,10 @@ function getWelcomeResponse(response) {
 // Gets a poster prepares the speech to reply to the user.
 function handleBusScheduleRequest(intent, session, response) {
     // var stopIdSlot = intent.slots.StopID;
-    var repromptText = "With Metro, you can get real time bus arrival information for a route.  For example, you could say L two, or forty, or you can say exit. Now, which route do you want?";
-    var routeNames = ["L two", "forty-two", "forty-three"];
-    var sessionAttributes = {};
-	// var StopID = "1001829";
-    var StopID = "1001789";
-    
     // var StopID = stopIdSlot;
+	// var StopID = "1001829";
+    var sessionAttributes = {};
+    var StopID = "1001789";
  
     // Read the first 4 events, then set the count to 4
     sessionAttributes.index = paginationSize;
@@ -126,7 +123,6 @@ function handleBusScheduleRequest(intent, session, response) {
 }
 
 function getJsonEventsFromMetro(StopID, eventCallback) {
-	// WMATA's test API key
     var url = urlPrefix + 'api_key=' + apiKey + '&StopID=' + StopID;
 
     https.get(url, function(res) {
