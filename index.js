@@ -95,7 +95,7 @@ function handleBusScheduleRequest(intent, session, response) {
         sessionAttributes.text = events;
         console.log(sessionAttributes.text);
         session.attributes = sessionAttributes;
-        if (events.length == 0) {
+        if (events.length === 0) {
             speechText = "There is a problem connecting to Metro at this time. Please try again later.";
             response.tell(speechText);
         } else {
@@ -112,7 +112,7 @@ function handleBusScheduleRequest(intent, session, response) {
             speechText = "For the stop at " + stopName + ". ";
             for (i = 1; i < paginationSize; i++) {
                 // cleaning up the output to sound a little more natural
-                var predictionText = events[i]
+                var predictionText = events[i];
                 predictionText = predictionText.replace("will arrive in 0 minutes", "is arriving now");
                 predictionText = predictionText.replace("will arrive in 1 minutes", "will arrive in 1 minute");
                 speechText = speechText + predictionText + " ";
@@ -157,7 +157,7 @@ function parseJson(text) {
         retArr.push(eventText);
     }
 
-    if (text.length == 0) {
+    if (text.length === 0) {
         return retArr;
     }
     return retArr;
