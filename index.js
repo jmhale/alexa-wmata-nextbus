@@ -1,5 +1,8 @@
 // App ID for the skill
-var APP_ID = 'amzn1.echo-sdk-ams.app.87696405-b058-4a93-90a2-ab1f6be26f2f';
+var APP_ID = '';
+
+// WMATA API Key
+var apiKey = '';
 
 var https = require('https');
 
@@ -8,9 +11,6 @@ var AlexaSkill = require('./AlexaSkill');
 
 // URL prefix to fetch stop information from WMATA
 var urlPrefix = 'https://api.wmata.com/NextBusService.svc/json/jPredictions?';
-
-// WMATA API Key
-var apiKey = '';
 
 // Variable defining number of events to be read at one time, including the stop name.
  var paginationSize = 5;
