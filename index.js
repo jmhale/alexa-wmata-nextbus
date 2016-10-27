@@ -13,7 +13,7 @@ var urlPrefix = 'https://api.wmata.com/NextBusService.svc/json/jPredictions?';
 var apiKey = 'kfgpmgvfgacx98de9q3xazww';
 
 // Variable defining number of events to be read at one time, including the stop name.
- var paginationSize = 4;
+ var paginationSize = 5;
 
 // Variable defining the length of the delimiter between events 
 var delimiterSize = 2;
