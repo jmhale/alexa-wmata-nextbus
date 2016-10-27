@@ -10,7 +10,7 @@ var AlexaSkill = require('./AlexaSkill');
 var urlPrefix = 'https://api.wmata.com/NextBusService.svc/json/jPredictions?';
 
 // WMATA API Key
-var apiKey = 'kfgpmgvfgacx98de9q3xazww';
+var apiKey = '';
 
 // Variable defining number of events to be read at one time, including the stop name.
  var paginationSize = 5;
