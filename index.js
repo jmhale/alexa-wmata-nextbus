@@ -83,7 +83,7 @@ function handleBusScheduleRequest(intent, session, response) {
     // var StopID = stopIdSlot;
 	// var StopID = "1001829";
     var sessionAttributes = {};
-    var StopID = "1001789";
+    var StopID = "1001810";
  
     // Read the first 4 events, then set the count to 4
     sessionAttributes.index = paginationSize;
